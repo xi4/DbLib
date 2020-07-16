@@ -1,8 +1,6 @@
 ﻿﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.CompilerServices;
-using System.Text.Json.Serialization;
 
-namespace DbLib.Models
+ namespace DbLib.Models
 {
     public class WorkListing
     {

@@ -1,5 +1,4 @@
-﻿using System;
-namespace DbLib.Models
+﻿namespace DbLib.Models
 {
     public class Role
     {
