@@ -10,6 +10,7 @@ namespace DbLib.Models
         public DateTime CreateDate { get; set; }
         public User User { get; set; }
         public OrderItemWork OrderItemWork { get; set; }
+        public Payment Payment { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal tarrif { get; set; }
         public int count { get; set; }

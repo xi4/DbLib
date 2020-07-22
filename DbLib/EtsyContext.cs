@@ -26,6 +26,7 @@ namespace DbLib
         public DbSet<WorkListing> WorkListings  { get; set; }
         public DbSet<Curse> Curses  { get; set; }
         public DbSet<Billing> Billings { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
 
         public DbSet<Paper> Papers { get; set; }
@@ -49,12 +50,17 @@ namespace DbLib
             modelBuilder.Entity<OrderItem>()
                 .HasOne(e => e.listing)
                 .WithMany(c => c.OrderItems)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<OrderItem>()
                 .HasOne(e => e.listingSku)
                 .WithMany(c => c.orderItems)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.SetNull);
+            
+            modelBuilder.Entity<Billing>()
+                .HasOne(e => e.Payment)
+                .WithMany(c => c.billings)
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<DocPaper>()
                 .HasOne(e => e.Paper)
@@ -65,8 +71,7 @@ namespace DbLib
                 .HasOne(e => e.listingSku)
                 .WithMany(c => c.workListings)
                 .OnDelete(DeleteBehavior.Cascade);
-
-
+            
             modelBuilder.Entity<Order>()
                 .HasOne(e => e.Shop)
                 .WithMany(e => e.Orders)
