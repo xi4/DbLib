@@ -14,7 +14,7 @@ namespace DbLib
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Shop> Shops { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderInvoice> OrderInvoices {get;set;}
+        public DbSet<OrderInvoice> OrderInvoices { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<OrderItemParams> OrderItemParams { get; set; }
         public DbSet<OrderItemWork> OrderItemWorks { get; set; }
@@ -22,9 +22,9 @@ namespace DbLib
         public DbSet<ListingSku> ListingSkus { get; set; }
         public DbSet<ItemParam> ItemParams { get; set; }
         public DbSet<PhotoItem> PhotoItems { get; set; }
-        public DbSet<WorkType> WorkTypes  { get; set; }
-        public DbSet<WorkListing> WorkListings  { get; set; }
-        public DbSet<Curse> Curses  { get; set; }
+        public DbSet<WorkType> WorkTypes { get; set; }
+        public DbSet<WorkListing> WorkListings { get; set; }
+        public DbSet<Curse> Curses { get; set; }
         public DbSet<Billing> Billings { get; set; }
         public DbSet<Payment> Payments { get; set; }
 
@@ -35,13 +35,13 @@ namespace DbLib
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<OrderItemParams>()
-            .HasKey(bc => new { bc.OrderItemId, bc.ItemParamId });
+                .HasKey(bc => new {bc.OrderItemId, bc.ItemParamId});
 
             modelBuilder.Entity<WorkListing>()
                 .HasOne(e => e.workType)
                 .WithMany(c => c.workListings)
                 .OnDelete(DeleteBehavior.Cascade);
-            
+
             modelBuilder.Entity<OrderItem>()
                 .HasOne(e => e.order)
                 .WithMany(c => c.OrderItems)
@@ -56,17 +56,22 @@ namespace DbLib
                 .HasOne(e => e.listingSku)
                 .WithMany(c => c.orderItems)
                 .OnDelete(DeleteBehavior.SetNull);
-            
+
+            modelBuilder.Entity<OrderItemWork>()
+                .HasOne(e => e.OrderItem)
+                .WithMany(c => c.OrderItemWorks)
+                .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Billing>()
                 .HasOne(e => e.Payment)
                 .WithMany(c => c.billings)
                 .OnDelete(DeleteBehavior.SetNull);
-            
+
             modelBuilder.Entity<Payment>()
                 .HasOne(e => e.user)
                 .WithMany(c => c.payments)
                 .OnDelete(DeleteBehavior.SetNull);
-            
+
             modelBuilder.Entity<DocPaper>()
                 .HasOne(e => e.Paper)
                 .WithMany(c => c.DocPapers)
@@ -76,13 +81,13 @@ namespace DbLib
                 .HasOne(e => e.listingSku)
                 .WithMany(c => c.workListings)
                 .OnDelete(DeleteBehavior.Cascade);
-            
+
             modelBuilder.Entity<Order>()
                 .HasOne(e => e.Shop)
                 .WithMany(e => e.Orders)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<OrderItemParams>().HasKey(i => new { i.ItemParamId, i.OrderItemId});
+            modelBuilder.Entity<OrderItemParams>().HasKey(i => new {i.ItemParamId, i.OrderItemId});
 
             modelBuilder.Entity<OrderItemParams>()
                 .HasOne(e => e.ItemParam)
@@ -94,7 +99,7 @@ namespace DbLib
                 .WithMany(e => e.OrderItemParams)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<UserShop>().HasKey(bc => new { bc.shopId, bc.userId });
+            modelBuilder.Entity<UserShop>().HasKey(bc => new {bc.shopId, bc.userId});
 
             modelBuilder.Entity<UserShop>()
                 .HasOne(e => e.shop)
@@ -122,9 +127,7 @@ namespace DbLib
             modelBuilder.Entity<User>().HasIndex(c => c.Name).IsUnique();
 
 
-
-           // modelBuilder.Entity<User>().HasData(new User { Name="Kirill", Password="Kirill" });
+            // modelBuilder.Entity<User>().HasData(new User { Name="Kirill", Password="Kirill" });
         }
-
     }
 }

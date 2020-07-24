@@ -21,5 +21,6 @@ namespace DbLib.Models
         public ListingSku listingSku { get; set; }
         public ICollection<PhotoItem> PhotoItems { get; set; }
         public ICollection<OrderItemParams> OrderItemParams { get; set; }
+        public ICollection<OrderItemWork> OrderItemWorks { get; set; }
     }
 }
