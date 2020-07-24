@@ -12,5 +12,6 @@ namespace DbLib.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal summa { get; set; }
         public ICollection<Billing> billings { get; set; }
+        public User user { get; set; }
     }
 }

@@ -61,7 +61,12 @@ namespace DbLib
                 .HasOne(e => e.Payment)
                 .WithMany(c => c.billings)
                 .OnDelete(DeleteBehavior.SetNull);
-
+            
+            modelBuilder.Entity<Payment>()
+                .HasOne(e => e.user)
+                .WithMany(c => c.payments)
+                .OnDelete(DeleteBehavior.SetNull);
+            
             modelBuilder.Entity<DocPaper>()
                 .HasOne(e => e.Paper)
                 .WithMany(c => c.DocPapers)

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
  namespace DbLib.Models
@@ -16,6 +17,6 @@ using System.ComponentModel.DataAnnotations.Schema;
         [Column(TypeName = "decimal(18,2)")]
         public decimal Balance { get; set; }
         public bool isAdmin { get; internal set; }
-        //public ICollection<Shop> ShopsOwner { get; set; }
+        public ICollection<Payment> payments { get; set; }
     }
 }
