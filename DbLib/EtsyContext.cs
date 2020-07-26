@@ -27,6 +27,7 @@ namespace DbLib
         public DbSet<Curse> Curses { get; set; }
         public DbSet<Billing> Billings { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<OrderNum> OrderNums { get; set; }
 
 
         public DbSet<Paper> Papers { get; set; }

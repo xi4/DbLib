@@ -12,6 +12,7 @@ namespace DbLib.Models
         public int Id { get; set; }
         [Required]
         public long transaction_id { get; set; }
+        public int OrderNum { get; set; }
         public int quantity { get; set; }
         public DateTime? creation_tsz { get; set; }
         public Listing listing { get; set; }
