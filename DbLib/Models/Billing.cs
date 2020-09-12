@@ -7,6 +7,7 @@ namespace DbLib.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public int bill_type { get; set; }
         public DateTime CreateDate { get; set; }
         public User User { get; set; }
         public OrderItemWork OrderItemWork { get; set; }

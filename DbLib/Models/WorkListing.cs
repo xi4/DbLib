@@ -12,6 +12,7 @@
         public decimal price_ua { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal price_usd { get; set; }
+        public int order { get; set; }
 
 
         //https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json
