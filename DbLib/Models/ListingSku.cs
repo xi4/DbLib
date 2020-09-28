@@ -10,7 +10,7 @@ namespace DbLib.Models
         public int Id { get; set; }
 
         public string txt { get; set; }
-        
+        public string comment { get; set; }
         [Column(TypeName = "decimal(18,3)")]
         public decimal area { get; set; }
         [Column(TypeName = "decimal(18,2)")]
