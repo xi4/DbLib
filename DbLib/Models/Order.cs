@@ -40,5 +40,6 @@ namespace DbLib.Models
         public Shop Shop { get; set; }
         public bool is_dead { get; set; }
         public bool express { get; set; }
+        public bool priority { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace DbLib
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderInvoice> OrderInvoices { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<OrderItemDetail> OrderItemDetails { get; set; }
         public DbSet<OrderItemParams> OrderItemParams { get; set; }
         public DbSet<OrderItemWork> OrderItemWorks { get; set; }
         public DbSet<Listing> Listings { get; set; }
@@ -120,6 +121,10 @@ namespace DbLib
                 .ValueGeneratedOnAdd();
 
             modelBuilder.Entity<Order>()
+                .Property(f => f.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<OrderItemDetail>()
                 .Property(f => f.Id)
                 .ValueGeneratedOnAdd();
 
