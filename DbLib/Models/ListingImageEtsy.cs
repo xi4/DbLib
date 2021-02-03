@@ -13,7 +13,7 @@ namespace EtsyApi.Models
         public int hue { get; set; }
         public int saturation { get; set; }
         public int brightness { get; set; }
-        public bool is_black_and_white { get; set; }
+        public bool? is_black_and_white { get; set; }
         public int creation_tsz { get; set; }
         public int listing_id { get; set; }
         public int rank { get; set; }
