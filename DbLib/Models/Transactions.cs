@@ -64,7 +64,7 @@ namespace EtsyApi.Models
         public IList<string> tags { get; set; }
         public IList<string> materials { get; set; }
         public long image_listing_id { get; set; }
-        public int receipt_id { get; set; }
+        public long receipt_id { get; set; }
         public string shipping_cost { get; set; }
         public bool is_digital { get; set; }
         public string file_data { get; set; }

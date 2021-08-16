@@ -33,7 +33,7 @@ namespace EtsyApi.Models
 
     public class Receipt
     {
-        public int receipt_id { get; set; }
+        public long receipt_id { get; set; }
         public int creation_tsz { get; set; }
         public int last_modified_tsz { get; set; }
         public string name { get; set; }
